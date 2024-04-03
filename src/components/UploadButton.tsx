@@ -50,7 +50,7 @@ const startSimulatedProgress = () => {
         setIsUploading(true)
 
         const progressInterval = startSimulatedProgress()
-
+//handling of the file upload!
             const res = await startUpload(acceptedFile)
 
             if(!res) {

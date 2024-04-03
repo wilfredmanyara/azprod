@@ -10,16 +10,18 @@ const f = createUploadthing();
  
 export const ourFileRouter = {
   pdfUploader: f({ pdf: { maxFileSize: "8MB" } })
+  //receives upload request from the user
     .middleware(async ({ req }) => { 
-
+   //making sure only logged in or authorised users can request
         const {getUser} = getKindeServerSession()
         const user = getUser()
-
+  //unauthourised users cannot perform a request
         if(!user || !user.id) throw new Error("Unauthorized")
 
       return {userId: user.id};
     })
-    .onUploadComplete(async ({ metadata, file }) => {
+    //callback function via the onUploadComplete webhook
+     .onUploadComplete(async ({ metadata, file }) => {
       const createdFile = await db.file.create({
         data: {
           key: file.key,
@@ -40,7 +42,7 @@ export const ourFileRouter = {
 
         const pagesAmt = pagelevelDocs.length
 
-        const pineconeIndex = pinecone.Index('manyara');
+        const pineconeIndex = pinecone.Index('azprod');
 
 const embeddings = new OpenAIEmbeddings({
   openAIApiKey: process.env.OPENAI_API_KEY,

@@ -41,7 +41,7 @@ export const POST = async (req: NextRequest) => {
 
     
 
-      const pineconeIndex = pinecone.Index('manyara');
+      const pineconeIndex = pinecone.Index('azprod');
 
 const embeddings = new OpenAIEmbeddings({
   openAIApiKey: process.env.OPENAI_API_KEY,
