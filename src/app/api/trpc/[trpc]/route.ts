@@ -3,7 +3,7 @@ import { appRouter } from "@/trpc"
 
 const handler = (req: Request) =>
   fetchRequestHandler({
-    endpoint: 'https://azprod-cyan.vercel.app/api/trpc',
+    endpoint: '/api/trpc',
     req,
     router: appRouter,
     createContext: () => ({})
